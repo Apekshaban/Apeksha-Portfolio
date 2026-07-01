@@ -1,5 +1,13 @@
 import { useState } from 'react'
+import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { heroContent, navItems, socialLinks } from '../data/portfolioData'
+
+const socialIcons = {
+  github: <FaGithub aria-hidden="true" />,
+  linkedin: <FaLinkedinIn aria-hidden="true" />,
+  facebook: <FaFacebookF aria-hidden="true" />,
+  instagram: <FaInstagram aria-hidden="true" />,
+}
 
 function PortfolioHero() {
   const [photoMissing, setPhotoMissing] = useState(false)
@@ -39,7 +47,7 @@ function PortfolioHero() {
             {socialLinks.map((social) => (
               <li key={social.label}>
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.label}>
-                  {social.short}
+                  {socialIcons[social.icon]}
                 </a>
               </li>
             ))}
@@ -54,7 +62,7 @@ function PortfolioHero() {
           <div className="bg-circle" />
           {!photoMissing ? (
             <img
-              src="/profile.png"
+              src="/A1.png"
               alt="Apeksha portrait"
               className="profile-photo"
               onError={() => setPhotoMissing(true)}
